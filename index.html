@@ -1,326 +1,339 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2775.2">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>My Gym Workouts</title>
+  
+  <script src="[https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js](https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js)"></script>
+  
+  <style>
+    :root {
+      --bg-color: #0f172a;
+      --card-bg: #1e293b;
+      --text-color: #f8fafc;
+      --accent-color: #0284c7;
+      --border-color: #334155;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 12px;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .app-container {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    @media (min-width: 768px) {
+      .app-container { flex-direction: row; }
+    }
+
+    .sidebar {
+      width: 100%;
+      background: var(--card-bg);
+      padding: 16px;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      box-sizing: border-box;
+    }
+
+    @media (min-width: 768px) {
+      .sidebar { width: 320px; flex-shrink: 0; }
+    }
+
+    .sidebar h2 {
+      font-size: 1.1rem;
+      margin: 0 0 8px 0;
+      color: #38bdf8;
+    }
+
+    #external-events {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .fc-event-template {
+      padding: 12px;
+      border-radius: 8px;
+      color: white;
+      cursor: grab;
+      font-weight: 600;
+      font-size: 0.9rem;
+      user-select: none;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .calendar-container {
+      flex: 1;
+      background: var(--card-bg);
+      padding: 12px;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      box-sizing: border-box;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.85);
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 12px;
+    }
+
+    .modal-content {
+      background: #1e293b;
+      padding: 16px;
+      border-radius: 12px;
+      width: 100%;
+      max-width: 550px;
+      max-height: 85vh;
+      overflow-y: auto;
+      border: 1px solid var(--border-color);
+    }
+
+    .modal-content h3 {
+      margin-top: 0;
+      color: #38bdf8;
+      font-size: 1.2rem;
+    }
+
+    .exercise-card {
+      background: #0f172a;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 12px;
+    }
+
+    .exercise-title {
+      font-weight: 700;
+      color: #f8fafc;
+      font-size: 1rem;
+      margin-bottom: 4px;
+    }
+
+    .exercise-meta {
+      font-size: 0.85rem;
+      color: #94a3b8;
+      margin-bottom: 8px;
+    }
+
+    .btn-video {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #0284c7;
+      color: white;
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 6px 10px;
+      border-radius: 4px;
+      margin-top: 4px;
+    }
+
+    .btn-close {
+      background: #0284c7;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 6px;
+      font-weight: bold;
+      margin-top: 12px;
+      width: 100%;
+      cursor: pointer;
+    }
+
+    .btn-delete {
+      background: #ef4444;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 6px;
+      font-weight: bold;
+      margin-top: 8px;
+      width: 100%;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
-<p class="p1">&lt;!DOCTYPE html&gt;</p>
-<p class="p1">&lt;html lang="en"&gt;</p>
-<p class="p1">&lt;head&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta charset="UTF-8"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;title&gt;My Gym Workouts&lt;/title&gt;</p>
-<p class="p2"><span class="Apple-converted-space">  </span></p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js"&gt;&lt;/script&gt;</p>
-<p class="p2"><span class="Apple-converted-space">  </span></p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;style&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>:root {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>--bg-color: #0f172a;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>--card-bg: #1e293b;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>--text-color: #f8fafc;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>--accent-color: #0284c7;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>--border-color: #334155;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>body {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin: 0;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 12px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background-color: var(--bg-color);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--text-color);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>-webkit-tap-highlight-color: transparent;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.app-container {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>flex-direction: column;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 16px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>max-width: 1200px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin: 0 auto;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>@media (min-width: 768px) {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>.app-container {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>flex-direction: row;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.sidebar {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>width: 100%;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: var(--card-bg);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 16px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 12px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid var(--border-color);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>box-sizing: border-box;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>@media (min-width: 768px) {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>.sidebar {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>width: 320px;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>flex-shrink: 0;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.sidebar h2 {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 1.1rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin: 0 0 8px 0;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: #38bdf8;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>#external-events {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>flex-direction: column;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 10px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 12px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.fc-event-template {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 12px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 8px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: white;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>cursor: grab;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 600;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.9rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>user-select: none;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: 0 2px 4px rgba(0,0,0,0.2);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.calendar-container {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>flex: 1;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: var(--card-bg);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 12px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 12px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid var(--border-color);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>box-sizing: border-box;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>/* Modal styling */</p>
-<p class="p1"><span class="Apple-converted-space">    </span>.modal {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: none;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>position: fixed;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>top: 0; left: 0; right: 0; bottom: 0;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(0,0,0,0.8);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>justify-content: center;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>z-index: 1000;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 16px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.modal-content {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: #1e293b;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 20px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 12px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>width: 100%;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>max-width: 500px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>max-height: 80vh;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>overflow-y: auto;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid var(--border-color);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.modal-content h3 {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 0;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: #38bdf8;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.exercise-list {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>white-space: pre-wrap;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.9rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>line-height: 1.5;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: #0f172a;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 12px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 8px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid var(--border-color);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.btn-close {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: #0284c7;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: white;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border: none;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 10px 18px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 6px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-weight: bold;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 12px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>width: 100%;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>cursor: pointer;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.btn-delete {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: #ef4444;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: white;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border: none;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 10px 18px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 6px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-weight: bold;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 8px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>width: 100%;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>cursor: pointer;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/style&gt;</p>
-<p class="p1">&lt;/head&gt;</p>
-<p class="p1">&lt;body&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="app-container"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="sidebar"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;h2&gt;Trainiac Workout Library&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;p style="font-size: 0.8rem; color: #94a3b8; margin-bottom: 0;"&gt;Drag blocks to your calendar or tap to schedule.&lt;/p&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div id="external-events"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="fc-event-template" style="background-color: #0284c7;"<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">             </span>data-title="Routine 1: Full Body &amp; Circuit"<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">             </span>data-color="#0284c7"<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">             </span>data-details="WARM-UP:</p>
-<p class="p1">• Incline Bench Pigeon Stretch w/ Reach (1x8/side)</p>
-<p class="p1">• High to Low Band Pull Apart (1x10)</p>
-<p class="p2"><br></p>
-<p class="p1">MAIN BLOCK:</p>
-<p class="p1">• DB Cyclist Squat: 3x6-10 @ 17.5 kg</p>
-<p class="p1">• Machine Lying Single Leg Curl: 2x8-12/side @ 30 kg</p>
-<p class="p1">• 3s Eccentric DB Chest Press: 3x8-10</p>
-<p class="p1">• Underhand Grip Lat Pulldown: 3x6-10 @ 45 kg</p>
-<p class="p1">• Cable Face Pull to Y Raise: 2x8-10 @ 20 kg</p>
-<p class="p2"><br></p>
-<p class="p1">FINISHER SUPERSET (2 Sets):</p>
-<p class="p1">• Sled Push: 60-90 sec @ 70 kg</p>
-<p class="p1">• KB &amp; Figure of 4 Stand: 6-8 reps/side @ 10 kg"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>Routine 1: Full Body &amp; Circuit</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="fc-event-template" style="background-color: #10b981;"<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">             </span>data-title="Routine 2: Superset &amp; Core Focus"<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">             </span>data-color="#10b981"<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">             </span>data-details="WARM-UP:</p>
-<p class="p1">• Cat to Cow (1x30s)</p>
-<p class="p1">• Adductor Stretch w/ Thoracic Twist (1x5/side)</p>
-<p class="p2"><br></p>
-<p class="p1">SUPERSET A (3 Sets):</p>
-<p class="p1">• Slow Tempo DB Front Squat (3s down): 3x8-10</p>
-<p class="p1">• Feet Elevated Hamstring Bridge Banded March: 3x12-20</p>
-<p class="p2"><br></p>
-<p class="p1">SUPERSET B (3 Sets):</p>
-<p class="p1">• Half-Kneeling Strict Press: 3x8-10/side</p>
-<p class="p1">• Hip Flexor Iso Plank: 3x30-45s/side</p>
-<p class="p2"><br></p>
-<p class="p1">SUPERSET C (3 Sets):</p>
-<p class="p1">• Forearm Supported Incline Row: 3x8-10/side</p>
-<p class="p1">• Prone W to Y Raise: 3x8-12</p>
-<p class="p2"><br></p>
-<p class="p1">SUPERSET D (3 Sets):</p>
-<p class="p1">• Close Grip DB Bicep Curls: 3x12</p>
-<p class="p1">• Close Grip Push Up: 3x10"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>Routine 2: Superset &amp; Core Focus</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="fc-event-template" style="background-color: #d97706;"<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">             </span>data-title="Routine 3: Strength &amp; Posterior"<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">             </span>data-color="#d97706"<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">             </span>data-details="WARM-UP:</p>
-<p class="p1">• Thoracic Spine Mobility on Bench (1x10)</p>
-<p class="p1">• KB Adductor Stretch: 1x8/side @ 10 kg</p>
-<p class="p2"><br></p>
-<p class="p1">MAIN STRENGTH BLOCK:</p>
-<p class="p1">• Barbell Deadlift: 3x5-8 @ 60 kg (60s rest)</p>
-<p class="p1">• Machine Seated Hip Adduction: 2x8-12 @ 35 kg (60s rest)</p>
-<p class="p1">• Landmine Half-Kneeling Single Arm Press: 2x6-8/side (60s rest)"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>Routine 3: Strength &amp; Posterior</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="calendar-container"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div id="calendar"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="modal" id="detailsModal"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="modal-content"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;h3 id="modalTitle"&gt;Workout Details&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="exercise-list" id="modalDetails"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;button class="btn-close" onclick="closeModal()"&gt;Close&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;button class="btn-delete" id="btnDeleteEvent"&gt;Delete Scheduled Workout&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>let calendar;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>let selectedEvent = null;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>document.addEventListener('DOMContentLoaded', function() {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>const containerEl = document.getElementById('external-events');</p>
-<p class="p2"><span class="Apple-converted-space">      </span></p>
-<p class="p1"><span class="Apple-converted-space">      </span>new FullCalendar.Draggable(containerEl, {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>itemSelector: '.fc-event-template',</p>
-<p class="p1"><span class="Apple-converted-space">        </span>eventData: function(eventEl) {</p>
-<p class="p1"><span class="Apple-converted-space">          </span>return {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>title: eventEl.dataset.title,</p>
-<p class="p1"><span class="Apple-converted-space">            </span>backgroundColor: eventEl.dataset.color,</p>
-<p class="p1"><span class="Apple-converted-space">            </span>borderColor: eventEl.dataset.color,</p>
-<p class="p1"><span class="Apple-converted-space">            </span>extendedProps: { details: eventEl.dataset.details }</p>
-<p class="p1"><span class="Apple-converted-space">          </span>};</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">      </span>});</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>const calendarEl = document.getElementById('calendar');</p>
-<p class="p2"><span class="Apple-converted-space">      </span></p>
-<p class="p1"><span class="Apple-converted-space">      </span>calendar = new FullCalendar.Calendar(calendarEl, {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>initialView: 'dayGridMonth',</p>
-<p class="p1"><span class="Apple-converted-space">        </span>headerToolbar: {</p>
-<p class="p1"><span class="Apple-converted-space">          </span>left: 'prev,next',</p>
-<p class="p1"><span class="Apple-converted-space">          </span>center: 'title',</p>
-<p class="p1"><span class="Apple-converted-space">          </span>right: 'today'</p>
-<p class="p1"><span class="Apple-converted-space">        </span>},</p>
-<p class="p1"><span class="Apple-converted-space">        </span>editable: true,</p>
-<p class="p1"><span class="Apple-converted-space">        </span>droppable: true,</p>
-<p class="p1"><span class="Apple-converted-space">        </span>events: JSON.parse(localStorage.getItem('scheduledWorkouts') || '[]'),</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>eventReceive: function() { saveCalendarState(); },</p>
-<p class="p1"><span class="Apple-converted-space">        </span>eventChange: function() { saveCalendarState(); },</p>
-<p class="p1"><span class="Apple-converted-space">        </span>eventClick: function(info) { openModal(info.event); }</p>
-<p class="p1"><span class="Apple-converted-space">      </span>});</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>calendar.render();</p>
-<p class="p1"><span class="Apple-converted-space">    </span>});</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>function saveCalendarState() {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>const events = calendar.getEvents().map(e =&gt; ({</p>
-<p class="p1"><span class="Apple-converted-space">        </span>id: e.id,</p>
-<p class="p1"><span class="Apple-converted-space">        </span>title: e.title,</p>
-<p class="p1"><span class="Apple-converted-space">        </span>start: e.startStr,</p>
-<p class="p1"><span class="Apple-converted-space">        </span>backgroundColor: e.backgroundColor,</p>
-<p class="p1"><span class="Apple-converted-space">        </span>borderColor: e.borderColor,</p>
-<p class="p1"><span class="Apple-converted-space">        </span>extendedProps: e.extendedProps</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}));</p>
-<p class="p1"><span class="Apple-converted-space">      </span>localStorage.setItem('scheduledWorkouts', JSON.stringify(events));</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>function openModal(event) {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>selectedEvent = event;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>document.getElementById('modalTitle').innerText = event.title;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>document.getElementById('modalDetails').innerText = event.extendedProps.details || 'No exercise details available.';</p>
-<p class="p1"><span class="Apple-converted-space">      </span>document.getElementById('detailsModal').style.display = 'flex';</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>function closeModal() {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>document.getElementById('detailsModal').style.display = 'none';</p>
-<p class="p1"><span class="Apple-converted-space">      </span>selectedEvent = null;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('btnDeleteEvent').addEventListener('click', function() {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>if (selectedEvent) {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>selectedEvent.remove();</p>
-<p class="p1"><span class="Apple-converted-space">        </span>saveCalendarState();</p>
-<p class="p1"><span class="Apple-converted-space">        </span>closeModal();</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>});</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/script&gt;</p>
-<p class="p1">&lt;/body&gt;</p>
-<p class="p1">&lt;/html&gt;</p>
+
+  <div class="app-container">
+    <div class="sidebar">
+      <h2>Trainiac Workout Library</h2>
+      <p style="font-size: 0.8rem; color: #94a3b8; margin-bottom: 0;">Drag blocks to your calendar or tap to view details.</p>
+
+      <div id="external-events">
+        <div class="fc-event-template" style="background-color: #0284c7;" 
+             data-title="Routine 1: Full Body & Circuit" 
+             data-color="#0284c7" 
+             data-exercises='[
+               {"name": "Incline Bench Pigeon Stretch with Reach", "meta": "1 set x 8 reps each side"},
+               {"name": "High to Low Band Pull Apart", "meta": "1 set x 10 reps"},
+               {"name": "Dumbbell Cyclist Squat", "meta": "3 sets x 6-10 reps (60s rest) | Target: 17.5 kg"},
+               {"name": "Machine Lying Single Leg Curl", "meta": "2 sets x 8-12 reps each side (60s rest) | Target: 30 kg"},
+               {"name": "3 Second Eccentric Dumbbell Chest Press", "meta": "3 sets x 8-10 reps (60s rest)"},
+               {"name": "Underhand Grip Lat Pulldown", "meta": "3 sets x 6-10 reps (60s rest) | Target: 45 kg"},
+               {"name": "Cable Face Pull to Y Raise", "meta": "2 sets x 8-10 reps (60s rest) | Target: 20 kg"},
+               {"name": "Sled Push", "meta": "2 sets x 60-90 seconds | Target: 70 kg"},
+               {"name": "Kettlebell & Figure of 4 Stand", "meta": "2 sets x 6-8 reps each side | Target: 10 kg"}
+             ]'>
+          Routine 1: Full Body & Circuit
+        </div>
+
+        <div class="fc-event-template" style="background-color: #10b981;" 
+             data-title="Routine 2: Superset & Core Focus" 
+             data-color="#10b981" 
+             data-exercises='[
+               {"name": "Cat to Cow", "meta": "1 set x 30sec"},
+               {"name": "Adductor Stretch with Thoracic Twist", "meta": "1 set x 5 reps each side"},
+               {"name": "Slow Tempo Dumbbell Front Squat", "meta": "3 sets x 8-10 reps (3s eccentric)"},
+               {"name": "Feet Elevated Hamstring Bridge Banded March", "meta": "3 sets x 12-20 reps total"},
+               {"name": "Half-Kneeling Strict Press", "meta": "3 sets x 8-10 reps each side"},
+               {"name": "Hip Flexor Iso Plank", "meta": "3 sets x 30-45 seconds each side"},
+               {"name": "Forearm Supported Incline Bench Single Arm Row", "meta": "3 sets x 8-10 reps each side"},
+               {"name": "Prone W to Y Raise", "meta": "3 sets x 8-12 reps"},
+               {"name": "Close Grip Dumbbell Bicep Curls", "meta": "3 sets x 12 reps"},
+               {"name": "Close Grip Push Up", "meta": "3 sets x 10 reps"}
+             ]'>
+          Routine 2: Superset & Core Focus
+        </div>
+
+        <div class="fc-event-template" style="background-color: #d97706;" 
+             data-title="Routine 3: Strength & Posterior" 
+             data-color="#d97706" 
+             data-exercises='[
+               {"name": "Thoracic Spine Mobility using Bench", "meta": "1 set x 10 reps"},
+               {"name": "Kettlebell Adductor Stretch", "meta": "1 set x 8 reps each side | Target: 10 kg"},
+               {"name": "Barbell Deadlift", "meta": "3 sets x 5-8 reps (60s rest) | Target: 60 kg"},
+               {"name": "Machine Seated Hip Adduction", "meta": "2 sets x 8-12 reps (60s rest) | Target: 35 kg"},
+               {"name": "Landmine Half-Kneeling Single Arm Press", "meta": "2 sets x 6-8 reps each side (60s rest)"}
+             ]'>
+          Routine 3: Strength & Posterior
+        </div>
+      </div>
+    </div>
+
+    <div class="calendar-container">
+      <div id="calendar"></div>
+    </div>
+  </div>
+
+  <div class="modal" id="detailsModal">
+    <div class="modal-content">
+      <h3 id="modalTitle">Workout Details</h3>
+      <div id="exerciseCardsContainer"></div>
+      <button class="btn-close" onclick="closeModal()">Close</button>
+      <button class="btn-delete" id="btnDeleteEvent">Delete Scheduled Workout</button>
+    </div>
+  </div>
+
+  <script>
+    let calendar;
+    let selectedEvent = null;
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const containerEl = document.getElementById('external-events');
+      
+      new FullCalendar.Draggable(containerEl, {
+        itemSelector: '.fc-event-template',
+        eventData: function(eventEl) {
+          return {
+            title: eventEl.dataset.title,
+            backgroundColor: eventEl.dataset.color,
+            borderColor: eventEl.dataset.color,
+            extendedProps: { exercises: JSON.parse(eventEl.dataset.exercises || '[]') }
+          };
+        }
+      });
+
+      const calendarEl = document.getElementById('calendar');
+      
+      calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        headerToolbar: {
+          left: 'prev,next',
+          center: 'title',
+          right: 'today'
+        },
+        editable: true,
+        droppable: true,
+        events: JSON.parse(localStorage.getItem('scheduledWorkouts') || '[]'),
+        
+        eventReceive: function() { saveCalendarState(); },
+        eventChange: function() { saveCalendarState(); },
+        eventClick: function(info) { openModal(info.event); }
+      });
+
+      calendar.render();
+    });
+
+    function saveCalendarState() {
+      const events = calendar.getEvents().map(e => ({
+        id: e.id,
+        title: e.title,
+        start: e.startStr,
+        backgroundColor: e.backgroundColor,
+        borderColor: e.borderColor,
+        extendedProps: e.extendedProps
+      }));
+      localStorage.setItem('scheduledWorkouts', JSON.stringify(events));
+    }
+
+    function openModal(event) {
+      selectedEvent = event;
+      document.getElementById('modalTitle').innerText = event.title;
+      
+      const container = document.getElementById('exerciseCardsContainer');
+      container.innerHTML = '';
+
+      const exercises = event.extendedProps.exercises || [];
+
+      exercises.forEach(ex => {
+        const card = document.createElement('div');
+        card.className = 'exercise-card';
+
+        const youtubeUrl = `[https://www.youtube.com/results?search_query=$](https://www.youtube.com/results?search_query=$){encodeURIComponent(ex.name + ' exercise form')}`;
+
+        card.innerHTML = `
+          <div class="exercise-title">${ex.name}</div>
+          <div class="exercise-meta">${ex.meta}</div>
+          <a href="${youtubeUrl}" target="_blank" class="btn-video">🎬 View Form Video</a>
+        `;
+
+        container.appendChild(card);
+      });
+
+      document.getElementById('detailsModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('detailsModal').style.display = 'none';
+      selectedEvent = null;
+    }
+
+    document.getElementById('btnDeleteEvent').addEventListener('click', function() {
+      if (selectedEvent) {
+        selectedEvent.remove();
+        saveCalendarState();
+        closeModal();
+      }
+    });
+  </script>
 </body>
 </html>
