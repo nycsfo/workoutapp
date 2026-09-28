@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>My Gym Workouts</title>
   
-  <script src="[https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js](https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js)"></script>
+  <!-- FullCalendar Core & Interaction Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js"></script>
   
   <style>
     :root {
@@ -59,19 +60,45 @@
     #external-events {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
       margin-top: 12px;
     }
 
-    .fc-event-template {
+    .workout-card-sidebar {
       padding: 12px;
       border-radius: 8px;
       color: white;
-      cursor: grab;
       font-weight: 600;
       font-size: 0.9rem;
-      user-select: none;
       box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .fc-event-template {
+      cursor: grab;
+      user-select: none;
+    }
+
+    .fc-event-template:active {
+      cursor: grabbing;
+    }
+
+    .btn-schedule-fast {
+      background: rgba(255,255,255,0.2);
+      border: none;
+      color: white;
+      padding: 6px 10px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: bold;
+      cursor: pointer;
+      align-self: flex-start;
+    }
+
+    .btn-schedule-fast:hover {
+      background: rgba(255,255,255,0.35);
     }
 
     .calendar-container {
@@ -81,8 +108,10 @@
       border-radius: 12px;
       border: 1px solid var(--border-color);
       box-sizing: border-box;
+      min-height: 500px;
     }
 
+    /* Modal styling */
     .modal {
       display: none;
       position: fixed;
@@ -176,10 +205,11 @@
   <div class="app-container">
     <div class="sidebar">
       <h2>Trainiac Workout Library</h2>
-      <p style="font-size: 0.8rem; color: #94a3b8; margin-bottom: 0;">Drag blocks to your calendar or tap to view details.</p>
+      <p style="font-size: 0.8rem; color: #94a3b8; margin-bottom: 0;">Drag blocks to calendar or tap "+ Add to Date".</p>
 
       <div id="external-events">
-        <div class="fc-event-template" style="background-color: #0284c7;" 
+        
+        <div class="workout-card-sidebar fc-event-template" style="background-color: #0284c7;" 
              data-title="Routine 1: Full Body & Circuit" 
              data-color="#0284c7" 
              data-exercises='[
@@ -193,10 +223,11 @@
                {"name": "Sled Push", "meta": "2 sets x 60-90 seconds | Target: 70 kg"},
                {"name": "Kettlebell & Figure of 4 Stand", "meta": "2 sets x 6-8 reps each side | Target: 10 kg"}
              ]'>
-          Routine 1: Full Body & Circuit
+          <span>Routine 1: Full Body & Circuit</span>
+          <button class="btn-schedule-fast" onclick="quickSchedule('Routine 1: Full Body & Circuit', '#0284c7', event)">+ Add to Date</button>
         </div>
 
-        <div class="fc-event-template" style="background-color: #10b981;" 
+        <div class="workout-card-sidebar fc-event-template" style="background-color: #10b981;" 
              data-title="Routine 2: Superset & Core Focus" 
              data-color="#10b981" 
              data-exercises='[
@@ -211,10 +242,11 @@
                {"name": "Close Grip Dumbbell Bicep Curls", "meta": "3 sets x 12 reps"},
                {"name": "Close Grip Push Up", "meta": "3 sets x 10 reps"}
              ]'>
-          Routine 2: Superset & Core Focus
+          <span>Routine 2: Superset & Core Focus</span>
+          <button class="btn-schedule-fast" onclick="quickSchedule('Routine 2: Superset & Core Focus', '#10b981', event)">+ Add to Date</button>
         </div>
 
-        <div class="fc-event-template" style="background-color: #d97706;" 
+        <div class="workout-card-sidebar fc-event-template" style="background-color: #d97706;" 
              data-title="Routine 3: Strength & Posterior" 
              data-color="#d97706" 
              data-exercises='[
@@ -224,8 +256,10 @@
                {"name": "Machine Seated Hip Adduction", "meta": "2 sets x 8-12 reps (60s rest) | Target: 35 kg"},
                {"name": "Landmine Half-Kneeling Single Arm Press", "meta": "2 sets x 6-8 reps each side (60s rest)"}
              ]'>
-          Routine 3: Strength & Posterior
+          <span>Routine 3: Strength & Posterior</span>
+          <button class="btn-schedule-fast" onclick="quickSchedule('Routine 3: Strength & Posterior', '#d97706', event)">+ Add to Date</button>
         </div>
+
       </div>
     </div>
 
@@ -250,17 +284,20 @@
     document.addEventListener('DOMContentLoaded', function() {
       const containerEl = document.getElementById('external-events');
       
-      new FullCalendar.Draggable(containerEl, {
-        itemSelector: '.fc-event-template',
-        eventData: function(eventEl) {
-          return {
-            title: eventEl.dataset.title,
-            backgroundColor: eventEl.dataset.color,
-            borderColor: eventEl.dataset.color,
-            extendedProps: { exercises: JSON.parse(eventEl.dataset.exercises || '[]') }
-          };
-        }
-      });
+      // Initialize Draggable interface
+      if (typeof FullCalendar.Draggable !== 'undefined') {
+        new FullCalendar.Draggable(containerEl, {
+          itemSelector: '.fc-event-template',
+          eventData: function(eventEl) {
+            return {
+              title: eventEl.dataset.title,
+              backgroundColor: eventEl.dataset.color,
+              borderColor: eventEl.dataset.color,
+              extendedProps: { exercises: JSON.parse(eventEl.dataset.exercises || '[]') }
+            };
+          }
+        });
+      }
 
       const calendarEl = document.getElementById('calendar');
       
@@ -295,6 +332,24 @@
       localStorage.setItem('scheduledWorkouts', JSON.stringify(events));
     }
 
+    function quickSchedule(title, color, event) {
+      event.stopPropagation();
+      const targetEl = event.target.closest('.fc-event-template');
+      const exercises = JSON.parse(targetEl.dataset.exercises || '[]');
+
+      const targetDate = prompt("Enter date to schedule this workout (YYYY-MM-DD):", new Date().toISOString().split('T')[0]);
+      if (targetDate) {
+        calendar.addEvent({
+          title: title,
+          start: targetDate,
+          backgroundColor: color,
+          borderColor: color,
+          extendedProps: { exercises: exercises }
+        });
+        saveCalendarState();
+      }
+    }
+
     function openModal(event) {
       selectedEvent = event;
       document.getElementById('modalTitle').innerText = event.title;
@@ -308,7 +363,7 @@
         const card = document.createElement('div');
         card.className = 'exercise-card';
 
-        const youtubeUrl = `[https://www.youtube.com/results?search_query=$](https://www.youtube.com/results?search_query=$){encodeURIComponent(ex.name + ' exercise form')}`;
+        const youtubeUrl = `https://www.youtube.com/results?search_query=${encodeURIComponent(ex.name + ' exercise form')}`;
 
         card.innerHTML = `
           <div class="exercise-title">${ex.name}</div>
