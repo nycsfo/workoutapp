@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>My Gym Workouts</title>
   
-  <!-- FullCalendar Core & Interaction Bundle -->
   <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js"></script>
   
   <style>
@@ -48,7 +47,7 @@
     }
 
     @media (min-width: 768px) {
-      .sidebar { width: 320px; flex-shrink: 0; }
+      .sidebar { width: 340px; flex-shrink: 0; }
     }
 
     .sidebar h2 {
@@ -60,8 +59,11 @@
     #external-events {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 10px;
       margin-top: 12px;
+      max-height: 75vh;
+      overflow-y: auto;
+      padding-right: 4px;
     }
 
     .workout-card-sidebar {
@@ -69,7 +71,7 @@
       border-radius: 8px;
       color: white;
       font-weight: 600;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       box-shadow: 0 2px 4px rgba(0,0,0,0.2);
       display: flex;
       flex-direction: column;
@@ -111,7 +113,6 @@
       min-height: 500px;
     }
 
-    /* Modal styling */
     .modal {
       display: none;
       position: fixed;
@@ -151,7 +152,7 @@
     .exercise-title {
       font-weight: 700;
       color: #f8fafc;
-      font-size: 1rem;
+      font-size: 0.95rem;
       margin-bottom: 4px;
     }
 
@@ -205,13 +206,13 @@
   <div class="app-container">
     <div class="sidebar">
       <h2>Trainiac Workout Library</h2>
-      <p style="font-size: 0.8rem; color: #94a3b8; margin-bottom: 0;">Drag blocks to calendar or tap "+ Add to Date".</p>
+      <p style="font-size: 0.8rem; color: #94a3b8; margin-bottom: 0;">Drag blocks or tap "+ Add to Date".</p>
 
       <div id="external-events">
         
+        <!-- Routine 1 -->
         <div class="workout-card-sidebar fc-event-template" style="background-color: #0284c7;" 
-             data-title="Routine 1: Full Body & Circuit" 
-             data-color="#0284c7" 
+             data-title="Routine 1: Full Body & Circuit" data-color="#0284c7" 
              data-exercises='[
                {"name": "Incline Bench Pigeon Stretch with Reach", "meta": "1 set x 8 reps each side"},
                {"name": "High to Low Band Pull Apart", "meta": "1 set x 10 reps"},
@@ -227,9 +228,9 @@
           <button class="btn-schedule-fast" onclick="quickSchedule('Routine 1: Full Body & Circuit', '#0284c7', event)">+ Add to Date</button>
         </div>
 
+        <!-- Routine 2 -->
         <div class="workout-card-sidebar fc-event-template" style="background-color: #10b981;" 
-             data-title="Routine 2: Superset & Core Focus" 
-             data-color="#10b981" 
+             data-title="Routine 2: Superset & Core Focus" data-color="#10b981" 
              data-exercises='[
                {"name": "Cat to Cow", "meta": "1 set x 30sec"},
                {"name": "Adductor Stretch with Thoracic Twist", "meta": "1 set x 5 reps each side"},
@@ -246,9 +247,9 @@
           <button class="btn-schedule-fast" onclick="quickSchedule('Routine 2: Superset & Core Focus', '#10b981', event)">+ Add to Date</button>
         </div>
 
+        <!-- Routine 3 -->
         <div class="workout-card-sidebar fc-event-template" style="background-color: #d97706;" 
-             data-title="Routine 3: Strength & Posterior" 
-             data-color="#d97706" 
+             data-title="Routine 3: Strength & Posterior" data-color="#d97706" 
              data-exercises='[
                {"name": "Thoracic Spine Mobility using Bench", "meta": "1 set x 10 reps"},
                {"name": "Kettlebell Adductor Stretch", "meta": "1 set x 8 reps each side | Target: 10 kg"},
@@ -258,6 +259,81 @@
              ]'>
           <span>Routine 3: Strength & Posterior</span>
           <button class="btn-schedule-fast" onclick="quickSchedule('Routine 3: Strength & Posterior', '#d97706', event)">+ Add to Date</button>
+        </div>
+
+        <!-- NEW Routine 4: HOME Workout Block -->
+        <div class="workout-card-sidebar fc-event-template" style="background-color: #8b5cf6;" 
+             data-title="Routine 4: HOME Dumbbell & Bodyweight" data-color="#8b5cf6" 
+             data-exercises='[
+               {"name": "Cat to Cow Warmup", "meta": "1 set x 30 seconds"},
+               {"name": "Adductor Stretch with Thoracic Twist", "meta": "1 set x 5 reps each side"},
+               {"name": "Slow Tempo Dumbbell Front Squat", "meta": "3 sets x 8-10 reps (3s eccentric down)"},
+               {"name": "Forearm Supported Single Arm Row", "meta": "3 sets x 8-10 reps each side"},
+               {"name": "Half-Kneeling Strict Dumbbell Press", "meta": "3 sets x 8-10 reps each side"},
+               {"name": "Close Grip Push Up", "meta": "3 sets x 8-10 reps"},
+               {"name": "Close Grip Dumbbell Bicep Curls", "meta": "3 sets x 12 reps"},
+               {"name": "Hip Flexor Iso Plank", "meta": "3 sets x 30 seconds each side"}
+             ]'>
+          <span>Routine 4: HOME Dumbbell & Bodyweight</span>
+          <button class="btn-schedule-fast" onclick="quickSchedule('Routine 4: HOME Dumbbell & Bodyweight', '#8b5cf6', event)">+ Add to Date</button>
+        </div>
+
+        <!-- NEW Routine 5: STICK & Mobility Flow -->
+        <div class="workout-card-sidebar fc-event-template" style="background-color: #ec4899;" 
+             data-title="Routine 5: STICK Mobility & Joint Flow" data-color="#ec4899" 
+             data-exercises='[
+               {"name": "Thoracic Spine Mobility using Bench/Stick", "meta": "1 set x 12 reps"},
+               {"name": "Incline Bench Pigeon Stretch with Reach", "meta": "1 set x 8 reps each side"},
+               {"name": "Kettlebell/Stick Adductor Stretch", "meta": "1 set x 10 reps each side"},
+               {"name": "Prone W to Y Raise", "meta": "2 sets x 10-12 reps"},
+               {"name": "High to Low Band / Stick Pull Apart", "meta": "2 sets x 12 reps"},
+               {"name": "Feet Elevated Hamstring Bridge Banded March", "meta": "2 sets x 12-15 reps total"}
+             ]'>
+          <span>Routine 5: STICK Mobility & Joint Flow</span>
+          <button class="btn-schedule-fast" onclick="quickSchedule('Routine 5: STICK Mobility & Joint Flow', '#ec4899', event)">+ Add to Date</button>
+        </div>
+
+        <!-- NEW Routine 6: Lower Body Focus -->
+        <div class="workout-card-sidebar fc-event-template" style="background-color: #06b6d4;" 
+             data-title="Routine 6: Lower Body & Glute Focus" data-color="#06b6d4" 
+             data-exercises='[
+               {"name": "Incline Bench Pigeon Stretch with Reach", "meta": "1 set x 8 reps each side"},
+               {"name": "Barbell Deadlift", "meta": "3 sets x 5-8 reps (60s rest) | Target: 60 kg"},
+               {"name": "Dumbbell Cyclist Squat", "meta": "3 sets x 6-10 reps (60s rest) | Target: 17.5 kg"},
+               {"name": "Machine Lying Single Leg Curl", "meta": "2 sets x 8-12 reps each side (60s rest) | Target: 30 kg"},
+               {"name": "Machine Seated Hip Adduction", "meta": "2 sets x 8-12 reps (60s rest) | Target: 35 kg"}
+             ]'>
+          <span>Routine 6: Lower Body & Glute Focus</span>
+          <button class="btn-schedule-fast" onclick="quickSchedule('Routine 6: Lower Body & Glute Focus', '#06b6d4', event)">+ Add to Date</button>
+        </div>
+
+        <!-- NEW Routine 7: Upper Body Focus -->
+        <div class="workout-card-sidebar fc-event-template" style="background-color: #f97316;" 
+             data-title="Routine 7: Upper Body Push & Pull" data-color="#f97316" 
+             data-exercises='[
+               {"name": "High to Low Band Pull Apart", "meta": "1 set x 10 reps"},
+               {"name": "3 Second Eccentric Dumbbell Chest Press", "meta": "3 sets x 8-10 reps (60s rest)"},
+               {"name": "Underhand Grip Lat Pulldown", "meta": "3 sets x 6-10 reps (60s rest) | Target: 45 kg"},
+               {"name": "Half-Kneeling Strict Press", "meta": "3 sets x 8-10 reps each side"},
+               {"name": "Cable Face Pull to Y Raise", "meta": "2 sets x 8-10 reps (60s rest) | Target: 20 kg"},
+               {"name": "Close Grip Dumbbell Bicep Curls", "meta": "3 sets x 12 reps"}
+             ]'>
+          <span>Routine 7: Upper Body Push & Pull</span>
+          <button class="btn-schedule-fast" onclick="quickSchedule('Routine 7: Upper Body Push & Pull', '#f97316', event)">+ Add to Date</button>
+        </div>
+
+        <!-- NEW Routine 8: Conditioning & Core -->
+        <div class="workout-card-sidebar fc-event-template" style="background-color: #84cc16;" 
+             data-title="Routine 8: Conditioning & Core" data-color="#84cc16" 
+             data-exercises='[
+               {"name": "Cat to Cow", "meta": "1 set x 30sec"},
+               {"name": "Sled Push", "meta": "3 sets x 60-90 seconds | Target: 70 kg"},
+               {"name": "Kettlebell & Figure of 4 Stand", "meta": "3 sets x 6-8 reps each side | Target: 10 kg"},
+               {"name": "Hip Flexor Iso Plank", "meta": "3 sets x 30-45 seconds each side"},
+               {"name": "Close Grip Push Up", "meta": "2 sets x 10 reps"}
+             ]'>
+          <span>Routine 8: Conditioning & Core</span>
+          <button class="btn-schedule-fast" onclick="quickSchedule('Routine 8: Conditioning & Core', '#84cc16', event)">+ Add to Date</button>
         </div>
 
       </div>
@@ -284,7 +360,6 @@
     document.addEventListener('DOMContentLoaded', function() {
       const containerEl = document.getElementById('external-events');
       
-      // Initialize Draggable interface
       if (typeof FullCalendar.Draggable !== 'undefined') {
         new FullCalendar.Draggable(containerEl, {
           itemSelector: '.fc-event-template',
