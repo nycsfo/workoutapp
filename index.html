@@ -47,7 +47,7 @@
     }
 
     @media (min-width: 768px) {
-      .sidebar { width: 340px; flex-shrink: 0; }
+      .sidebar { width: 360px; flex-shrink: 0; }
     }
 
     .sidebar h2 {
@@ -56,11 +56,22 @@
       color: #38bdf8;
     }
 
+    .category-title {
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #94a3b8;
+      font-weight: 700;
+      margin: 16px 0 8px 0;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 4px;
+    }
+
     #external-events {
       display: flex;
       flex-direction: column;
       gap: 10px;
-      margin-top: 12px;
+      margin-top: 8px;
       max-height: 75vh;
       overflow-y: auto;
       padding-right: 4px;
@@ -87,20 +98,42 @@
       cursor: grabbing;
     }
 
-    .btn-schedule-fast {
+    .card-actions {
+      display: flex;
+      gap: 6px;
+    }
+
+    .btn-card {
       background: rgba(255,255,255,0.2);
       border: none;
       color: white;
-      padding: 6px 10px;
+      padding: 5px 8px;
       border-radius: 4px;
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: bold;
       cursor: pointer;
-      align-self: flex-start;
     }
 
-    .btn-schedule-fast:hover {
+    .btn-card:hover {
       background: rgba(255,255,255,0.35);
+    }
+
+    /* Collapsible Preview Details */
+    .routine-preview-details {
+      display: none;
+      background: rgba(15, 23, 42, 0.75);
+      border-radius: 6px;
+      padding: 8px 10px;
+      margin-top: 4px;
+      font-size: 0.78rem;
+      font-weight: normal;
+      color: #cbd5e1;
+      line-height: 1.4;
+    }
+
+    .routine-preview-details ul {
+      margin: 0;
+      padding-left: 16px;
     }
 
     .calendar-container {
@@ -206,11 +239,13 @@
   <div class="app-container">
     <div class="sidebar">
       <h2>Trainiac Workout Library</h2>
-      <p style="font-size: 0.8rem; color: #94a3b8; margin-bottom: 0;">Drag blocks or tap "+ Add to Date".</p>
+      <p style="font-size: 0.8rem; color: #94a3b8; margin-bottom: 0;">Tap "👁 View" to expand or "+ Add" to schedule.</p>
 
       <div id="external-events">
-        
-        <!-- Routine 1 -->
+
+        <!-- FULL BODY CATEGORY -->
+        <div class="category-title">🏋️ Full Body Sessions</div>
+
         <div class="workout-card-sidebar fc-event-template" style="background-color: #0284c7;" 
              data-title="Routine 1: Full Body & Circuit" data-color="#0284c7" 
              data-exercises='[
@@ -225,10 +260,13 @@
                {"name": "Kettlebell & Figure of 4 Stand", "meta": "2 sets x 6-8 reps each side | Target: 10 kg"}
              ]'>
           <span>Routine 1: Full Body & Circuit</span>
-          <button class="btn-schedule-fast" onclick="quickSchedule('Routine 1: Full Body & Circuit', '#0284c7', event)">+ Add to Date</button>
+          <div class="card-actions">
+            <button class="btn-card" onclick="toggleHinge(this, event)">👁 View Exercises</button>
+            <button class="btn-card" onclick="quickSchedule('Routine 1: Full Body & Circuit', '#0284c7', event)">+ Add to Date</button>
+          </div>
+          <div class="routine-preview-details"></div>
         </div>
 
-        <!-- Routine 2 -->
         <div class="workout-card-sidebar fc-event-template" style="background-color: #10b981;" 
              data-title="Routine 2: Superset & Core Focus" data-color="#10b981" 
              data-exercises='[
@@ -244,10 +282,37 @@
                {"name": "Close Grip Push Up", "meta": "3 sets x 10 reps"}
              ]'>
           <span>Routine 2: Superset & Core Focus</span>
-          <button class="btn-schedule-fast" onclick="quickSchedule('Routine 2: Superset & Core Focus', '#10b981', event)">+ Add to Date</button>
+          <div class="card-actions">
+            <button class="btn-card" onclick="toggleHinge(this, event)">👁 View Exercises</button>
+            <button class="btn-card" onclick="quickSchedule('Routine 2: Superset & Core Focus', '#10b981', event)">+ Add to Date</button>
+          </div>
+          <div class="routine-preview-details"></div>
         </div>
 
-        <!-- Routine 3 -->
+        <!-- UPPER BODY CATEGORY -->
+        <div class="category-title">💪 Upper Body Sessions</div>
+
+        <div class="workout-card-sidebar fc-event-template" style="background-color: #f97316;" 
+             data-title="Routine 7: Upper Body Push & Pull" data-color="#f97316" 
+             data-exercises='[
+               {"name": "High to Low Band Pull Apart", "meta": "1 set x 10 reps"},
+               {"name": "3 Second Eccentric Dumbbell Chest Press", "meta": "3 sets x 8-10 reps (60s rest)"},
+               {"name": "Underhand Grip Lat Pulldown", "meta": "3 sets x 6-10 reps (60s rest) | Target: 45 kg"},
+               {"name": "Half-Kneeling Strict Press", "meta": "3 sets x 8-10 reps each side"},
+               {"name": "Cable Face Pull to Y Raise", "meta": "2 sets x 8-10 reps (60s rest) | Target: 20 kg"},
+               {"name": "Close Grip Dumbbell Bicep Curls", "meta": "3 sets x 12 reps"}
+             ]'>
+          <span>Routine 7: Upper Body Push & Pull</span>
+          <div class="card-actions">
+            <button class="btn-card" onclick="toggleHinge(this, event)">👁 View Exercises</button>
+            <button class="btn-card" onclick="quickSchedule('Routine 7: Upper Body Push & Pull', '#f97316', event)">+ Add to Date</button>
+          </div>
+          <div class="routine-preview-details"></div>
+        </div>
+
+        <!-- LOWER BODY CATEGORY -->
+        <div class="category-title">🦵 Lower Body & Posterior</div>
+
         <div class="workout-card-sidebar fc-event-template" style="background-color: #d97706;" 
              data-title="Routine 3: Strength & Posterior" data-color="#d97706" 
              data-exercises='[
@@ -258,10 +323,53 @@
                {"name": "Landmine Half-Kneeling Single Arm Press", "meta": "2 sets x 6-8 reps each side (60s rest)"}
              ]'>
           <span>Routine 3: Strength & Posterior</span>
-          <button class="btn-schedule-fast" onclick="quickSchedule('Routine 3: Strength & Posterior', '#d97706', event)">+ Add to Date</button>
+          <div class="card-actions">
+            <button class="btn-card" onclick="toggleHinge(this, event)">👁 View Exercises</button>
+            <button class="btn-card" onclick="quickSchedule('Routine 3: Strength & Posterior', '#d97706', event)">+ Add to Date</button>
+          </div>
+          <div class="routine-preview-details"></div>
         </div>
 
-        <!-- Routine 4: HOME Workout Block 1 -->
+        <div class="workout-card-sidebar fc-event-template" style="background-color: #06b6d4;" 
+             data-title="Routine 6: Lower Body & Glute Focus" data-color="#06b6d4" 
+             data-exercises='[
+               {"name": "Incline Bench Pigeon Stretch with Reach", "meta": "1 set x 8 reps each side"},
+               {"name": "Barbell Deadlift", "meta": "3 sets x 5-8 reps (60s rest) | Target: 60 kg"},
+               {"name": "Dumbbell Cyclist Squat", "meta": "3 sets x 6-10 reps (60s rest) | Target: 17.5 kg"},
+               {"name": "Machine Lying Single Leg Curl", "meta": "2 sets x 8-12 reps each side (60s rest) | Target: 30 kg"},
+               {"name": "Machine Seated Hip Adduction", "meta": "2 sets x 8-12 reps (60s rest) | Target: 35 kg"}
+             ]'>
+          <span>Routine 6: Lower Body & Glute Focus</span>
+          <div class="card-actions">
+            <button class="btn-card" onclick="toggleHinge(this, event)">👁 View Exercises</button>
+            <button class="btn-card" onclick="quickSchedule('Routine 6: Lower Body & Glute Focus', '#06b6d4', event)">+ Add to Date</button>
+          </div>
+          <div class="routine-preview-details"></div>
+        </div>
+
+        <!-- CORE & CONDITIONING CATEGORY -->
+        <div class="category-title">🔥 Core & Conditioning</div>
+
+        <div class="workout-card-sidebar fc-event-template" style="background-color: #84cc16;" 
+             data-title="Routine 8: Conditioning & Core" data-color="#84cc16" 
+             data-exercises='[
+               {"name": "Cat to Cow", "meta": "1 set x 30sec"},
+               {"name": "Sled Push", "meta": "3 sets x 60-90 seconds | Target: 70 kg"},
+               {"name": "Kettlebell & Figure of 4 Stand", "meta": "3 sets x 6-8 reps each side | Target: 10 kg"},
+               {"name": "Hip Flexor Iso Plank", "meta": "3 sets x 30-45 seconds each side"},
+               {"name": "Close Grip Push Up", "meta": "2 sets x 10 reps"}
+             ]'>
+          <span>Routine 8: Conditioning & Core</span>
+          <div class="card-actions">
+            <button class="btn-card" onclick="toggleHinge(this, event)">👁 View Exercises</button>
+            <button class="btn-card" onclick="quickSchedule('Routine 8: Conditioning & Core', '#84cc16', event)">+ Add to Date</button>
+          </div>
+          <div class="routine-preview-details"></div>
+        </div>
+
+        <!-- HOME USE ROUTINES -->
+        <div class="category-title">🏠 Home Workouts</div>
+
         <div class="workout-card-sidebar fc-event-template" style="background-color: #8b5cf6;" 
              data-title="Routine 4: HOME Dumbbell & Bodyweight" data-color="#8b5cf6" 
              data-exercises='[
@@ -275,68 +383,13 @@
                {"name": "Hip Flexor Iso Plank", "meta": "3 sets x 30 seconds each side"}
              ]'>
           <span>Routine 4: HOME Dumbbell & Bodyweight</span>
-          <button class="btn-schedule-fast" onclick="quickSchedule('Routine 4: HOME Dumbbell & Bodyweight', '#8b5cf6', event)">+ Add to Date</button>
+          <div class="card-actions">
+            <button class="btn-card" onclick="toggleHinge(this, event)">👁 View Exercises</button>
+            <button class="btn-card" onclick="quickSchedule('Routine 4: HOME Dumbbell & Bodyweight', '#8b5cf6', event)">+ Add to Date</button>
+          </div>
+          <div class="routine-preview-details"></div>
         </div>
 
-        <!-- Routine 5: STICK & Mobility Flow -->
-        <div class="workout-card-sidebar fc-event-template" style="background-color: #ec4899;" 
-             data-title="Routine 5: STICK Mobility & Joint Flow" data-color="#ec4899" 
-             data-exercises='[
-               {"name": "Thoracic Spine Mobility using Bench/Stick", "meta": "1 set x 12 reps"},
-               {"name": "Incline Bench Pigeon Stretch with Reach", "meta": "1 set x 8 reps each side"},
-               {"name": "Kettlebell/Stick Adductor Stretch", "meta": "1 set x 10 reps each side"},
-               {"name": "Prone W to Y Raise", "meta": "2 sets x 10-12 reps"},
-               {"name": "High to Low Band / Stick Pull Apart", "meta": "2 sets x 12 reps"},
-               {"name": "Feet Elevated Hamstring Bridge Banded March", "meta": "2 sets x 12-15 reps total"}
-             ]'>
-          <span>Routine 5: STICK Mobility & Joint Flow</span>
-          <button class="btn-schedule-fast" onclick="quickSchedule('Routine 5: STICK Mobility & Joint Flow', '#ec4899', event)">+ Add to Date</button>
-        </div>
-
-        <!-- Routine 6: Lower Body Focus -->
-        <div class="workout-card-sidebar fc-event-template" style="background-color: #06b6d4;" 
-             data-title="Routine 6: Lower Body & Glute Focus" data-color="#06b6d4" 
-             data-exercises='[
-               {"name": "Incline Bench Pigeon Stretch with Reach", "meta": "1 set x 8 reps each side"},
-               {"name": "Barbell Deadlift", "meta": "3 sets x 5-8 reps (60s rest) | Target: 60 kg"},
-               {"name": "Dumbbell Cyclist Squat", "meta": "3 sets x 6-10 reps (60s rest) | Target: 17.5 kg"},
-               {"name": "Machine Lying Single Leg Curl", "meta": "2 sets x 8-12 reps each side (60s rest) | Target: 30 kg"},
-               {"name": "Machine Seated Hip Adduction", "meta": "2 sets x 8-12 reps (60s rest) | Target: 35 kg"}
-             ]'>
-          <span>Routine 6: Lower Body & Glute Focus</span>
-          <button class="btn-schedule-fast" onclick="quickSchedule('Routine 6: Lower Body & Glute Focus', '#06b6d4', event)">+ Add to Date</button>
-        </div>
-
-        <!-- Routine 7: Upper Body Focus -->
-        <div class="workout-card-sidebar fc-event-template" style="background-color: #f97316;" 
-             data-title="Routine 7: Upper Body Push & Pull" data-color="#f97316" 
-             data-exercises='[
-               {"name": "High to Low Band Pull Apart", "meta": "1 set x 10 reps"},
-               {"name": "3 Second Eccentric Dumbbell Chest Press", "meta": "3 sets x 8-10 reps (60s rest)"},
-               {"name": "Underhand Grip Lat Pulldown", "meta": "3 sets x 6-10 reps (60s rest) | Target: 45 kg"},
-               {"name": "Half-Kneeling Strict Press", "meta": "3 sets x 8-10 reps each side"},
-               {"name": "Cable Face Pull to Y Raise", "meta": "2 sets x 8-10 reps (60s rest) | Target: 20 kg"},
-               {"name": "Close Grip Dumbbell Bicep Curls", "meta": "3 sets x 12 reps"}
-             ]'>
-          <span>Routine 7: Upper Body Push & Pull</span>
-          <button class="btn-schedule-fast" onclick="quickSchedule('Routine 7: Upper Body Push & Pull', '#f97316', event)">+ Add to Date</button>
-        </div>
-
-        <!-- Routine 8: Conditioning & Core -->
-        <div class="workout-card-sidebar fc-event-template" style="background-color: #84cc16;" 
-             data-title="Routine 8: Conditioning & Core" data-color="#84cc16" 
-             data-exercises='[
-               {"name": "Cat to Cow", "meta": "1 set x 30sec"},
-               {"name": "Sled Push", "meta": "3 sets x 60-90 seconds | Target: 70 kg"},
-               {"name": "Kettlebell & Figure of 4 Stand", "meta": "3 sets x 6-8 reps each side | Target: 10 kg"},
-               {"name": "Hip Flexor Iso Plank", "meta": "3 sets x 30-45 seconds each side"},
-               {"name": "Close Grip Push Up", "meta": "2 sets x 10 reps"}
-             ]'>
-          <span>Routine 8: Conditioning & Core</span>
-          <button class="btn-schedule-fast" onclick="quickSchedule('Routine 8: Conditioning & Core', '#84cc16', event)">+ Add to Date</button>
-        </div>
-
-        <!-- Routine 9: HOME Workout Block 2 -->
         <div class="workout-card-sidebar fc-event-template" style="background-color: #a855f7;" 
              data-title="Routine 9: HOME Core, Mobility & Light DB" data-color="#a855f7" 
              data-exercises='[
@@ -349,7 +402,32 @@
                {"name": "Hip Flexor Iso Plank", "meta": "3 sets x 30 seconds each side"}
              ]'>
           <span>Routine 9: HOME Core, Mobility & Light DB</span>
-          <button class="btn-schedule-fast" onclick="quickSchedule('Routine 9: HOME Core, Mobility & Light DB', '#a855f7', event)">+ Add to Date</button>
+          <div class="card-actions">
+            <button class="btn-card" onclick="toggleHinge(this, event)">👁 View Exercises</button>
+            <button class="btn-card" onclick="quickSchedule('Routine 9: HOME Core, Mobility & Light DB', '#a855f7', event)">+ Add to Date</button>
+          </div>
+          <div class="routine-preview-details"></div>
+        </div>
+
+        <!-- MOBILITY & STICK ROUTINES (BOTTOM) -->
+        <div class="category-title">🧘 Stick & Mobility Flow</div>
+
+        <div class="workout-card-sidebar fc-event-template" style="background-color: #ec4899;" 
+             data-title="Routine 5: STICK Mobility & Joint Flow" data-color="#ec4899" 
+             data-exercises='[
+               {"name": "Thoracic Spine Mobility using Bench/Stick", "meta": "1 set x 12 reps"},
+               {"name": "Incline Bench Pigeon Stretch with Reach", "meta": "1 set x 8 reps each side"},
+               {"name": "Kettlebell/Stick Adductor Stretch", "meta": "1 set x 10 reps each side"},
+               {"name": "Prone W to Y Raise", "meta": "2 sets x 10-12 reps"},
+               {"name": "High to Low Band / Stick Pull Apart", "meta": "2 sets x 12 reps"},
+               {"name": "Feet Elevated Hamstring Bridge Banded March", "meta": "2 sets x 12-15 reps total"}
+             ]'>
+          <span>Routine 5: STICK Mobility & Joint Flow</span>
+          <div class="card-actions">
+            <button class="btn-card" onclick="toggleHinge(this, event)">👁 View Exercises</button>
+            <button class="btn-card" onclick="quickSchedule('Routine 5: STICK Mobility & Joint Flow', '#ec4899', event)">+ Add to Date</button>
+          </div>
+          <div class="routine-preview-details"></div>
         </div>
 
       </div>
@@ -421,6 +499,27 @@
         extendedProps: e.extendedProps
       }));
       localStorage.setItem('scheduledWorkouts', JSON.stringify(events));
+    }
+
+    function toggleHinge(btn, event) {
+      event.stopPropagation();
+      const card = btn.closest('.workout-card-sidebar');
+      const detailsEl = card.querySelector('.routine-preview-details');
+      const exercises = JSON.parse(card.dataset.exercises || '[]');
+
+      if (detailsEl.style.display === 'block') {
+        detailsEl.style.display = 'none';
+        btn.innerText = '👁 View Exercises';
+      } else {
+        let html = '<ul>';
+        exercises.forEach(ex => {
+          html += `<li><strong>${ex.name}</strong> <br><span style="color:#94a3b8">${ex.meta}</span></li>`;
+        });
+        html += '</ul>';
+        detailsEl.innerHTML = html;
+        detailsEl.style.display = 'block';
+        btn.innerText = '🙈 Hide Exercises';
+      }
     }
 
     function quickSchedule(title, color, event) {
