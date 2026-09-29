@@ -118,7 +118,6 @@
       background: rgba(255,255,255,0.35);
     }
 
-    /* Collapsible Preview Details */
     .routine-preview-details {
       display: none;
       background: rgba(15, 23, 42, 0.75);
@@ -471,11 +470,11 @@
       const calendarEl = document.getElementById('calendar');
       
       calendar = new FullCalendar.Calendar(calendarEl, {
-        initialView: 'dayGridMonth',
+        initialView: 'dayGridWeek',
         headerToolbar: {
-          left: 'prev,next',
+          left: 'prev,next today',
           center: 'title',
-          right: 'today'
+          right: 'dayGridWeek,dayGridMonth'
         },
         editable: true,
         droppable: true,
