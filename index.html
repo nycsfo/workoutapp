@@ -5,8 +5,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>My Gym Workouts</title>
   
+  <!-- FullCalendar CSS & JS -->
   <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js"></script>
   
+  <!-- Firebase App & Firestore SDKs (v10 CDN) -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getFirestore, doc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+    // Your Firebase Configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyC3z5me3jEZPC-iE1o90fWST08JyD2ECjI",
+      authDomain: "my-workout-app-9fb2c.firebaseapp.com",
+      projectId: "my-workout-app-9fb2c",
+      storageBucket: "my-workout-app-9fb2c.firebasestorage.app",
+      messagingSenderId: "51994396543",
+      appId: "1:51994396543:web:3651b432b04e04f9927c4a"
+    };
+
+    // Initialize Firebase & Firestore
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const calendarDocRef = doc(db, "workout_data", "user_calendar");
+
+    window.db = db;
+    window.calendarDocRef = calendarDocRef;
+    window.setDoc = setDoc;
+    window.onSnapshot = onSnapshot;
+  </script>
+
   <style>
     :root {
       --bg-color: #0f172a;
@@ -408,7 +435,7 @@
           <div class="routine-preview-details"></div>
         </div>
 
-        <!-- MOBILITY & STICK ROUTINES (BOTTOM) -->
+        <!-- MOBILITY & STICK ROUTINES -->
         <div class="category-title">🧘 Stick & Mobility Flow</div>
 
         <div class="workout-card-sidebar fc-event-template" style="background-color: #ec4899;" 
@@ -470,15 +497,15 @@
       const calendarEl = document.getElementById('calendar');
       
       calendar = new FullCalendar.Calendar(calendarEl, {
-        initialView: 'dayGridWeek',
+        initialView: 'dayGridMonth',
         headerToolbar: {
-          left: 'prev,next today',
+          left: 'prev,next',
           center: 'title',
-          right: 'dayGridWeek,dayGridMonth'
+          right: 'today'
         },
         editable: true,
         droppable: true,
-        events: JSON.parse(localStorage.getItem('scheduledWorkouts') || '[]'),
+        events: [],
         
         eventReceive: function() { saveCalendarState(); },
         eventChange: function() { saveCalendarState(); },
@@ -486,18 +513,42 @@
       });
 
       calendar.render();
+
+      // Firebase Real-time Listener (Syncs across devices)
+      const checkFirebase = setInterval(() => {
+        if (window.onSnapshot && window.calendarDocRef) {
+          clearInterval(checkFirebase);
+          
+          window.onSnapshot(window.calendarDocRef, (docSnap) => {
+            if (docSnap.exists()) {
+              const data = docSnap.data();
+              const remoteEvents = data.events || [];
+              
+              calendar.removeAllEvents();
+              remoteEvents.forEach(e => calendar.addEvent(e));
+            }
+          });
+        }
+      }, 300);
     });
 
     function saveCalendarState() {
       const events = calendar.getEvents().map(e => ({
-        id: e.id,
+        id: e.id || String(Date.now()),
         title: e.title,
         start: e.startStr,
         backgroundColor: e.backgroundColor,
         borderColor: e.borderColor,
         extendedProps: e.extendedProps
       }));
+
+      // Save locally
       localStorage.setItem('scheduledWorkouts', JSON.stringify(events));
+
+      // Sync to Firebase Cloud Storage
+      if (window.setDoc && window.calendarDocRef) {
+        window.setDoc(window.calendarDocRef, { events: events }, { merge: true });
+      }
     }
 
     function toggleHinge(btn, event) {
@@ -529,6 +580,7 @@
       const targetDate = prompt("Enter date to schedule this workout (YYYY-MM-DD):", new Date().toISOString().split('T')[0]);
       if (targetDate) {
         calendar.addEvent({
+          id: String(Date.now()),
           title: title,
           start: targetDate,
           backgroundColor: color,
