@@ -8,12 +8,11 @@
   <!-- FullCalendar CSS & JS -->
   <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js"></script>
   
-  <!-- Firebase App & Firestore SDKs (v10 CDN) -->
+  <!-- Firebase App & Firestore SDKs -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
     import { getFirestore, doc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-    // Your Firebase Configuration
     const firebaseConfig = {
       apiKey: "AIzaSyC3z5me3jEZPC-iE1o90fWST08JyD2ECjI",
       authDomain: "my-workout-app-9fb2c.firebaseapp.com",
@@ -23,7 +22,6 @@
       appId: "1:51994396543:web:3651b432b04e04f9927c4a"
     };
 
-    // Initialize Firebase & Firestore
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
     const calendarDocRef = doc(db, "workout_data", "user_calendar");
@@ -119,10 +117,6 @@
     .fc-event-template {
       cursor: grab;
       user-select: none;
-    }
-
-    .fc-event-template:active {
-      cursor: grabbing;
     }
 
     .card-actions {
@@ -497,11 +491,11 @@
       const calendarEl = document.getElementById('calendar');
       
       calendar = new FullCalendar.Calendar(calendarEl, {
-        initialView: 'timeGridWeek',
+        initialView: 'dayGridWeek', // Defaults to Week view on load
         headerToolbar: {
-          left: 'prev,next',
+          left: 'prev,next today',
           center: 'title',
-          right: 'today'
+          right: 'dayGridWeek,dayGridMonth'
         },
         editable: true,
         droppable: true,
@@ -542,10 +536,8 @@
         extendedProps: e.extendedProps
       }));
 
-      // Save locally
       localStorage.setItem('scheduledWorkouts', JSON.stringify(events));
 
-      // Sync to Firebase Cloud Storage
       if (window.setDoc && window.calendarDocRef) {
         window.setDoc(window.calendarDocRef, { events: events }, { merge: true });
       }
