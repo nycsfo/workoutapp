@@ -166,7 +166,6 @@
       min-height: 500px;
     }
 
-    /* Modal Exercise Card Layout with Media */
     .modal {
       display: none;
       position: fixed;
@@ -219,7 +218,7 @@
 
     .exercise-media-box {
       width: 100%;
-      max-height: 160px;
+      max-height: 220px;
       background: #1e293b;
       border-radius: 6px;
       overflow: hidden;
@@ -232,8 +231,9 @@
 
     .exercise-media-box img {
       width: 100%;
-      height: 160px;
-      object-fit: cover;
+      max-height: 220px;
+      object-fit: contain;
+      background-color: #0f172a;
     }
 
     .form-cue {
@@ -299,15 +299,15 @@
         <div class="workout-card-sidebar fc-event-template" style="background-color: #0284c7;" 
              data-title="Routine 1: Full Body & Circuit" data-color="#0284c7" 
              data-exercises='[
-               {"name": "Incline Bench Pigeon Stretch with Reach", "meta": "1 set x 8 reps each side", "cue": "Chest tall, hinge forward over inclined bench, reach arm across for deep glute stretch.", "img": "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=400&q=80"},
-               {"name": "High to Low Band Pull Apart", "meta": "1 set x 10 reps", "cue": "Stand tall, soft knees, pull band diagonally across chest squeezing shoulder blades.", "img": "https://images.unsplash.com/photo-1598268121084-c8f7126e22c9?auto=format&fit=crop&w=400&q=80"},
-               {"name": "Dumbbell Cyclist Squat", "meta": "3 sets x 6-10 reps (60s rest) | Target: 17.5 kg", "cue": "Heels elevated on wedge, narrow stance, keep torso upright as you squat.", "img": "https://images.unsplash.com/photo-1566241142559-40e1dab266c6?auto=format&fit=crop&w=400&q=80"},
-               {"name": "Machine Lying Single Leg Curl", "meta": "2 sets x 8-12 reps each side (60s rest) | Target: 30 kg", "cue": "Lie face down, keep hips flat against bench, curl one heel toward glutes steadily.", "img": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=400&q=80"},
-               {"name": "3 Second Eccentric Dumbbell Chest Press", "meta": "3 sets x 8-10 reps (60s rest)", "cue": "Flat bench, lower dumbbells slowly for 3 seconds, press up with control.", "img": "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=400&q=80"},
-               {"name": "Underhand Grip Lat Pulldown", "meta": "3 sets x 6-10 reps (60s rest) | Target: 45 kg", "cue": "Palms facing you (supinated), pull bar to upper chest, keep chest lifted.", "img": "https://images.unsplash.com/photo-1605296867304-46d5465a13f1?auto=format&fit=crop&w=400&q=80"},
-               {"name": "Cable Face Pull to Y Raise", "meta": "2 sets x 8-10 reps (60s rest) | Target: 20 kg", "cue": "Pull rope to nose level, rotate knuckles back, then raise arms into a Y overhead.", "img": "https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?auto=format&fit=crop&w=400&q=80"},
-               {"name": "Sled Push", "meta": "2 sets x 60-90 seconds | Target: 70 kg", "cue": "Lean into handles at 45 degrees, drive through forefoot with a strong, braced core.", "img": "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=400&q=80"},
-               {"name": "Kettlebell & Figure of 4 Stand", "meta": "2 sets x 6-8 reps each side | Target: 10 kg", "cue": "Single-leg balance, hold kettlebell at chest, maintain stable core and hip alignment.", "img": "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=400&q=80"}
+               {"name": "Incline Bench Pigeon Stretch with Reach", "meta": "1 set x 8 reps each side", "cue": "Chest tall, hinge forward over inclined bench, reach arm across for deep glute stretch.", "img": "Workout_images/EX-01.jpg"},
+               {"name": "High to Low Band Pull Apart", "meta": "1 set x 10 reps", "cue": "Stand tall, soft knees, pull band diagonally across chest squeezing shoulder blades.", "img": "Workout_images/EX-02.jpg"},
+               {"name": "Dumbbell Cyclist Squat", "meta": "3 sets x 6-10 reps (60s rest) | Target: 17.5 kg", "cue": "Heels elevated on wedge, narrow stance, keep torso upright as you squat.", "img": "Workout_images/EX-03.jpg"},
+               {"name": "Machine Lying Single Leg Curl", "meta": "2 sets x 8-12 reps each side (60s rest) | Target: 30 kg", "cue": "Lie face down, keep hips flat against bench, curl one heel toward glutes steadily.", "img": "Workout_images/EX-04.jpg"},
+               {"name": "3 Second Eccentric Dumbbell Chest Press", "meta": "3 sets x 8-10 reps (60s rest)", "cue": "Flat bench, lower dumbbells slowly for 3 seconds, press up with control.", "img": "Workout_images/EX-05.jpg"},
+               {"name": "Underhand Grip Lat Pulldown", "meta": "3 sets x 6-10 reps (60s rest) | Target: 45 kg", "cue": "Palms facing you (supinated), pull bar to upper chest, keep chest lifted.", "img": "Workout_images/EX-06.jpg"},
+               {"name": "Cable Face Pull to Y Raise", "meta": "2 sets x 8-10 reps (60s rest) | Target: 20 kg", "cue": "Pull rope to nose level, rotate knuckles back, then raise arms into a Y overhead.", "img": "Workout_images/EX-07.jpg"},
+               {"name": "Sled Push", "meta": "2 sets x 60-90 seconds | Target: 70 kg", "cue": "Lean into handles at 45 degrees, drive through forefoot with a strong, braced core.", "img": "Workout_images/EX-08.jpg"},
+               {"name": "Kettlebell & Figure of 4 Stand", "meta": "2 sets x 6-8 reps each side | Target: 10 kg", "cue": "Single-leg balance, hold kettlebell at chest, maintain stable core and hip alignment.", "img": "Workout_images/EX-09.jpg"}
              ]'>
           <span>Routine 1: Full Body & Circuit</span>
           <div class="card-actions">
@@ -320,16 +320,16 @@
         <div class="workout-card-sidebar fc-event-template" style="background-color: #10b981;" 
              data-title="Routine 2: Superset & Core Focus" data-color="#10b981" 
              data-exercises='[
-               {"name": "Cat to Cow", "meta": "1 set x 30sec", "cue": "On hands and knees, flex and extend spine gently with breathing.", "img": "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=400&q=80"},
-               {"name": "Adductor Stretch with Thoracic Twist", "meta": "1 set x 5 reps each side", "cue": "One leg straight to side, rotate top arm upward to ceiling.", "img": "https://images.unsplash.com/photo-1598268121084-c8f7126e22c9?auto=format&fit=crop&w=400&q=80"},
-               {"name": "Slow Tempo Dumbbell Front Squat", "meta": "3 sets x 8-10 reps (3s eccentric)", "cue": "Hold DBs at shoulders, 3 seconds down, drive up through heels.", "img": "https://images.unsplash.com/photo-1566241142559-40e1dab266c6?auto=format&fit=crop&w=400&q=80"},
-               {"name": "Feet Elevated Hamstring Bridge Banded March", "meta": "3 sets x 12-20 reps total", "cue": "Heels on bench, lift hips into bridge, alternate lifting knees against band.", "img": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=400&q=80"},
-               {"name": "Half-Kneeling Strict Press", "meta": "3 sets x 8-10 reps each side", "cue": "One knee down, stay upright, press DB vertically overhead without arching lower back.", "img": "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=400&q=80"},
-               {"name": "Hip Flexor Iso Plank", "meta": "3 sets x 30-45 seconds each side", "cue": "Forearm plank, pull one knee towards chest isometric hold.", "img": "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=400&q=80"},
-               {"name": "Forearm Supported Incline Bench Single Arm Row", "meta": "3 sets x 8-10 reps each side", "cue": "Forearm braced on incline bench, pull DB up toward hip with flat back.", "img": "https://images.unsplash.com/photo-1605296867304-46d5465a13f1?auto=format&fit=crop&w=400&q=80"},
-               {"name": "Prone W to Y Raise", "meta": "3 sets x 8-12 reps", "cue": "Lie face down, draw elbows back into W shape, extend arms up into Y shape.", "img": "https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?auto=format&fit=crop&w=400&q=80"},
-               {"name": "Close Grip Dumbbell Bicep Curls", "meta": "3 sets x 12 reps", "cue": "Stand tall, palms facing up, keep elbows pinned close to ribs while curling.", "img": "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=400&q=80"},
-               {"name": "Close Grip Push Up", "meta": "3 sets x 10 reps", "cue": "Hands inside shoulder width, keep elbows tucked close to body as you lower.", "img": "https://images.unsplash.com/photo-1598268121084-c8f7126e22c9?auto=format&fit=crop&w=400&q=80"}
+               {"name": "Cat to Cow", "meta": "1 set x 30sec", "cue": "On hands and knees, flex and extend spine gently with breathing.", "img": "Workout_images/EX-10.jpg"},
+               {"name": "Adductor Stretch with Thoracic Twist", "meta": "1 set x 5 reps each side", "cue": "One leg straight to side, rotate top arm upward to ceiling.", "img": "Workout_images/EX-11.jpg"},
+               {"name": "Slow Tempo Dumbbell Front Squat", "meta": "3 sets x 8-10 reps (3s eccentric)", "cue": "Hold DBs at shoulders, 3 seconds down, drive up through heels.", "img": "Workout_images/EX-12.jpg"},
+               {"name": "Feet Elevated Hamstring Bridge Banded March", "meta": "3 sets x 12-20 reps total", "cue": "Heels on bench, lift hips into bridge, alternate lifting knees against band.", "img": "Workout_images/EX-13.jpg"},
+               {"name": "Half-Kneeling Strict Press", "meta": "3 sets x 8-10 reps each side", "cue": "One knee down, stay upright, press DB vertically overhead without arching lower back.", "img": "Workout_images/EX-14.jpg"},
+               {"name": "Hip Flexor Iso Plank", "meta": "3 sets x 30-45 seconds each side", "cue": "Forearm plank, pull one knee towards chest isometric hold.", "img": "Workout_images/EX-15.jpg"},
+               {"name": "Forearm Supported Incline Bench Single Arm Row", "meta": "3 sets x 8-10 reps each side", "cue": "Forearm braced on incline bench, pull DB up toward hip with flat back.", "img": "Workout_images/EX-16.jpg"},
+               {"name": "Prone W to Y Raise", "meta": "3 sets x 8-12 reps", "cue": "Lie face down, draw elbows back into W shape, extend arms up into Y shape.", "img": "Workout_images/EX-17.jpg"},
+               {"name": "Close Grip Dumbbell Bicep Curls", "meta": "3 sets x 12 reps", "cue": "Stand tall, palms facing up, keep elbows pinned close to ribs while curling.", "img": "Workout_images/EX-18.jpg"},
+               {"name": "Close Grip Push Up", "meta": "3 sets x 10 reps", "cue": "Hands inside shoulder width, keep elbows tucked close to body as you lower.", "img": "Workout_images/EX-19.jpg"}
              ]'>
           <span>Routine 2: Superset & Core Focus</span>
           <div class="card-actions">
@@ -345,12 +345,12 @@
         <div class="workout-card-sidebar fc-event-template" style="background-color: #f97316;" 
              data-title="Routine 7: Upper Body Push & Pull" data-color="#f97316" 
              data-exercises='[
-               {"name": "High to Low Band Pull Apart", "meta": "1 set x 10 reps", "cue": "Stand tall, pull band diagonally across chest squeezing shoulder blades.", "img": "https://images.unsplash.com/photo-1598268121084-c8f7126e22c9?auto=format&fit=crop&w=400&q=80"},
-               {"name": "3 Second Eccentric Dumbbell Chest Press", "meta": "3 sets x 8-10 reps (60s rest)", "cue": "Lower DBs on 3-second count, press up with control.", "img": "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=400&q=80"},
-               {"name": "Underhand Grip Lat Pulldown", "meta": "3 sets x 6-10 reps (60s rest) | Target: 45 kg", "cue": "Underhand grip, pull bar to upper chest, keep chest lifted.", "img": "https://images.unsplash.com/photo-1605296867304-46d5465a13f1?auto=format&fit=crop&w=400&q=80"},
-               {"name": "Half-Kneeling Strict Press", "meta": "3 sets x 8-10 reps each side", "cue": "One knee down, upright spine, press DB overhead.", "img": "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=400&q=80"},
-               {"name": "Cable Face Pull to Y Raise", "meta": "2 sets x 8-10 reps (60s rest) | Target: 20 kg", "cue": "Pull rope to nose, rotate knuckles back, raise arms into Y.", "img": "https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?auto=format&fit=crop&w=400&q=80"},
-               {"name": "Close Grip Dumbbell Bicep Curls", "meta": "3 sets x 12 reps", "cue": "Palms up, keep elbows pinned to ribs.", "img": "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=400&q=80"}
+               {"name": "High to Low Band Pull Apart", "meta": "1 set x 10 reps", "cue": "Stand tall, soft knees, pull band diagonally across chest squeezing shoulder blades.", "img": "Workout_images/EX-02.jpg"},
+               {"name": "3 Second Eccentric Dumbbell Chest Press", "meta": "3 sets x 8-10 reps (60s rest)", "cue": "Flat bench, lower dumbbells slowly for 3 seconds, press up with control.", "img": "Workout_images/EX-05.jpg"},
+               {"name": "Underhand Grip Lat Pulldown", "meta": "3 sets x 6-10 reps (60s rest) | Target: 45 kg", "cue": "Palms facing you (supinated), pull bar to upper chest, keep chest lifted.", "img": "Workout_images/EX-06.jpg"},
+               {"name": "Half-Kneeling Strict Press", "meta": "3 sets x 8-10 reps each side", "cue": "One knee down, stay upright, press DB vertically overhead without arching lower back.", "img": "Workout_images/EX-14.jpg"},
+               {"name": "Cable Face Pull to Y Raise", "meta": "2 sets x 8-10 reps (60s rest) | Target: 20 kg", "cue": "Pull rope to nose level, rotate knuckles back, then raise arms into a Y overhead.", "img": "Workout_images/EX-07.jpg"},
+               {"name": "Close Grip Dumbbell Bicep Curls", "meta": "3 sets x 12 reps", "cue": "Stand tall, palms facing up, keep elbows pinned close to ribs while curling.", "img": "Workout_images/EX-18.jpg"}
              ]'>
           <span>Routine 7: Upper Body Push & Pull</span>
           <div class="card-actions">
@@ -366,11 +366,11 @@
         <div class="workout-card-sidebar fc-event-template" style="background-color: #d97706;" 
              data-title="Routine 3: Strength & Posterior" data-color="#d97706" 
              data-exercises='[
-               {"name": "Thoracic Spine Mobility using Bench", "meta": "1 set x 10 reps", "cue": "Elbows on bench, sink chest toward floor to extend thoracic spine.", "img": "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=400&q=80"},
-               {"name": "Kettlebell Adductor Stretch", "meta": "1 set x 8 reps each side | Target: 10 kg", "cue": "Wide stance, shift hips sideways over bent knee, holding KB at chest.", "img": "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=400&q=80"},
-               {"name": "Barbell Deadlift", "meta": "3 sets x 5-8 reps (60s rest) | Target: 60 kg", "cue": "Hinge at hips, keep bar close to shins, flat spine, drive through floor.", "img": "https://upload.wikimedia.org/wikipedia/commons/8/82/Deadlift-execution-1.png"},
-               {"name": "Machine Seated Hip Adduction", "meta": "2 sets x 8-12 reps (60s rest) | Target: 35 kg", "cue": "Seated upright, squeeze inner thighs together with controlled return.", "img": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=400&q=80"},
-               {"name": "Landmine Half-Kneeling Single Arm Press", "meta": "2 sets x 6-8 reps each side (60s rest)", "cue": "Half-kneeling, press landmine sleeve diagonally upward from shoulder.", "img": "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=400&q=80"}
+               {"name": "Thoracic Spine Mobility using Bench", "meta": "1 set x 10 reps", "cue": "Elbows on bench, sink chest toward floor to extend thoracic spine.", "img": "Workout_images/EX-20.jpg"},
+               {"name": "Kettlebell Adductor Stretch", "meta": "1 set x 8 reps each side | Target: 10 kg", "cue": "Wide stance, shift hips sideways over bent knee, holding KB at chest.", "img": "Workout_images/EX-21.jpg"},
+               {"name": "Barbell Deadlift", "meta": "3 sets x 5-8 reps (60s rest) | Target: 60 kg", "cue": "Hinge at hips, keep bar close to shins, flat spine, drive through floor.", "img": "Workout_images/EX-22.jpg"},
+               {"name": "Machine Seated Hip Adduction", "meta": "2 sets x 8-12 reps (60s rest) | Target: 35 kg", "cue": "Seated upright, squeeze inner thighs together with controlled return.", "img": "Workout_images/EX-23.jpg"},
+               {"name": "Landmine Half-Kneeling Single Arm Press", "meta": "2 sets x 6-8 reps each side (60s rest)", "cue": "Half-kneeling, press landmine sleeve diagonally upward from shoulder.", "img": "Workout_images/EX-24.jpg"}
              ]'>
           <span>Routine 3: Strength & Posterior</span>
           <div class="card-actions">
@@ -383,11 +383,11 @@
         <div class="workout-card-sidebar fc-event-template" style="background-color: #06b6d4;" 
              data-title="Routine 6: Lower Body & Glute Focus" data-color="#06b6d4" 
              data-exercises='[
-               {"name": "Incline Bench Pigeon Stretch with Reach", "meta": "1 set x 8 reps each side", "cue": "Chest tall, hinge over bench, reach arm across for deep glute stretch.", "img": "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=400&q=80"},
-               {"name": "Barbell Deadlift", "meta": "3 sets x 5-8 reps (60s rest) | Target: 60 kg", "cue": "Hinge at hips, bar close to shins, neutral spine.", "img": "https://upload.wikimedia.org/wikipedia/commons/8/82/Deadlift-execution-1.png"},
-               {"name": "Dumbbell Cyclist Squat", "meta": "3 sets x 6-10 reps (60s rest) | Target: 17.5 kg", "cue": "Heels elevated on wedge, narrow stance, upright torso.", "img": "https://images.unsplash.com/photo-1566241142559-40e1dab266c6?auto=format&fit=crop&w=400&q=80"},
-               {"name": "Machine Lying Single Leg Curl", "meta": "2 sets x 8-12 reps each side (60s rest) | Target: 30 kg", "cue": "Lying face down, curl one heel toward glutes.", "img": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=400&q=80"},
-               {"name": "Machine Seated Hip Adduction", "meta": "2 sets x 8-12 reps (60s rest) | Target: 35 kg", "cue": "Squeeze inner thighs together, controlled return.", "img": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=400&q=80"}
+               {"name": "Incline Bench Pigeon Stretch with Reach", "meta": "1 set x 8 reps each side", "cue": "Chest tall, hinge forward over inclined bench, reach arm across for deep glute stretch.", "img": "Workout_images/EX-01.jpg"},
+               {"name": "Barbell Deadlift", "meta": "3 sets x 5-8 reps (60s rest) | Target: 60 kg", "cue": "Hinge at hips, keep bar close to shins, flat spine, drive through floor.", "img": "Workout_images/EX-22.jpg"},
+               {"name": "Dumbbell Cyclist Squat", "meta": "3 sets x 6-10 reps (60s rest) | Target: 17.5 kg", "cue": "Heels elevated on wedge, narrow stance, keep torso upright as you squat.", "img": "Workout_images/EX-03.jpg"},
+               {"name": "Machine Lying Single Leg Curl", "meta": "2 sets x 8-12 reps each side (60s rest) | Target: 30 kg", "cue": "Lie face down, keep hips flat against bench, curl one heel toward glutes steadily.", "img": "Workout_images/EX-04.jpg"},
+               {"name": "Machine Seated Hip Adduction", "meta": "2 sets x 8-12 reps (60s rest) | Target: 35 kg", "cue": "Seated upright, squeeze inner thighs together with controlled return.", "img": "Workout_images/EX-23.jpg"}
              ]'>
           <span>Routine 6: Lower Body & Glute Focus</span>
           <div class="card-actions">
@@ -403,11 +403,11 @@
         <div class="workout-card-sidebar fc-event-template" style="background-color: #84cc16;" 
              data-title="Routine 8: Conditioning & Core" data-color="#84cc16" 
              data-exercises='[
-               {"name": "Cat to Cow", "meta": "1 set x 30sec", "cue": "Hands and knees, flex and extend spine gently.", "img": "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=400&q=80"},
-               {"name": "Sled Push", "meta": "3 sets x 60-90 seconds | Target: 70 kg", "cue": "Lean into handles at 45 degrees, drive through feet.", "img": "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=400&q=80"},
-               {"name": "Kettlebell & Figure of 4 Stand", "meta": "3 sets x 6-8 reps each side | Target: 10 kg", "cue": "Single-leg stance, hold KB at chest, stable core.", "img": "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=400&q=80"},
-               {"name": "Hip Flexor Iso Plank", "meta": "3 sets x 30-45 seconds each side", "cue": "Forearm plank, pull one knee towards chest.", "img": "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=400&q=80"},
-               {"name": "Close Grip Push Up", "meta": "2 sets x 10 reps", "cue": "Hands close, keep elbows tucked to sides.", "img": "https://images.unsplash.com/photo-1598268121084-c8f7126e22c9?auto=format&fit=crop&w=400&q=80"}
+               {"name": "Cat to Cow", "meta": "1 set x 30sec", "cue": "On hands and knees, flex and extend spine gently with breathing.", "img": "Workout_images/EX-10.jpg"},
+               {"name": "Sled Push", "meta": "3 sets x 60-90 seconds | Target: 70 kg", "cue": "Lean into handles at 45 degrees, drive through forefoot with a strong, braced core.", "img": "Workout_images/EX-08.jpg"},
+               {"name": "Kettlebell & Figure of 4 Stand", "meta": "3 sets x 6-8 reps each side | Target: 10 kg", "cue": "Single-leg balance, hold kettlebell at chest, maintain stable core and hip alignment.", "img": "Workout_images/EX-09.jpg"},
+               {"name": "Hip Flexor Iso Plank", "meta": "3 sets x 30-45 seconds each side", "cue": "Forearm plank, pull one knee towards chest isometric hold.", "img": "Workout_images/EX-15.jpg"},
+               {"name": "Close Grip Push Up", "meta": "2 sets x 10 reps", "cue": "Hands inside shoulder width, keep elbows tucked close to body as you lower.", "img": "Workout_images/EX-19.jpg"}
              ]'>
           <span>Routine 8: Conditioning & Core</span>
           <div class="card-actions">
@@ -423,14 +423,14 @@
         <div class="workout-card-sidebar fc-event-template" style="background-color: #8b5cf6;" 
              data-title="Routine 4: HOME Dumbbell & Bodyweight" data-color="#8b5cf6" 
              data-exercises='[
-               {"name": "Cat to Cow Warmup", "meta": "1 set x 30 seconds", "cue": "Hands and knees, flex and extend spine.", "img": "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=400&q=80"},
-               {"name": "Adductor Stretch with Thoracic Twist", "meta": "1 set x 5 reps each side", "cue": "One leg straight out, rotate top arm up to ceiling.", "img": "https://images.unsplash.com/photo-1598268121084-c8f7126e22c9?auto=format&fit=crop&w=400&q=80"},
-               {"name": "Slow Tempo Dumbbell Front Squat", "meta": "3 sets x 8-10 reps (3s eccentric down)", "cue": "Hold DBs at shoulders, 3 seconds down, drive up.", "img": "https://images.unsplash.com/photo-1566241142559-40e1dab266c6?auto=format&fit=crop&w=400&q=80"},
-               {"name": "Forearm Supported Single Arm Row", "meta": "3 sets x 8-10 reps each side", "cue": "Brace forearm on table/chair, pull DB toward hip.", "img": "https://images.unsplash.com/photo-1605296867304-46d5465a13f1?auto=format&fit=crop&w=400&q=80"},
-               {"name": "Half-Kneeling Strict Dumbbell Press", "meta": "3 sets x 8-10 reps each side", "cue": "One knee down, press DB overhead without leaning.", "img": "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=400&q=80"},
-               {"name": "Close Grip Push Up", "meta": "3 sets x 8-10 reps", "cue": "Hands inside shoulder width, keep elbows tucked.", "img": "https://images.unsplash.com/photo-1598268121084-c8f7126e22c9?auto=format&fit=crop&w=400&q=80"},
-               {"name": "Close Grip Dumbbell Bicep Curls", "meta": "3 sets x 12 reps", "cue": "Palms up, keep elbows pinned to sides.", "img": "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=400&q=80"},
-               {"name": "Hip Flexor Iso Plank", "meta": "3 sets x 30 seconds each side", "cue": "Plank position, knee tucked toward chest.", "img": "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=400&q=80"}
+               {"name": "Cat to Cow Warmup", "meta": "1 set x 30 seconds", "cue": "On hands and knees, flex and extend spine gently with breathing.", "img": "Workout_images/EX-10.jpg"},
+               {"name": "Adductor Stretch with Thoracic Twist", "meta": "1 set x 5 reps each side", "cue": "One leg straight to side, rotate top arm upward to ceiling.", "img": "Workout_images/EX-11.jpg"},
+               {"name": "Slow Tempo Dumbbell Front Squat", "meta": "3 sets x 8-10 reps (3s eccentric down)", "cue": "Hold DBs at shoulders, 3 seconds down, drive up through heels.", "img": "Workout_images/EX-12.jpg"},
+               {"name": "Forearm Supported Single Arm Row", "meta": "3 sets x 8-10 reps each side", "cue": "Forearm braced on incline bench or chair, pull DB up toward hip.", "img": "Workout_images/EX-16.jpg"},
+               {"name": "Half-Kneeling Strict Dumbbell Press", "meta": "3 sets x 8-10 reps each side", "cue": "One knee down, stay upright, press DB vertically overhead.", "img": "Workout_images/EX-14.jpg"},
+               {"name": "Close Grip Push Up", "meta": "3 sets x 8-10 reps", "cue": "Hands inside shoulder width, keep elbows tucked close to body.", "img": "Workout_images/EX-19.jpg"},
+               {"name": "Close Grip Dumbbell Bicep Curls", "meta": "3 sets x 12 reps", "cue": "Stand tall, palms facing up, keep elbows pinned close to ribs.", "img": "Workout_images/EX-18.jpg"},
+               {"name": "Hip Flexor Iso Plank", "meta": "3 sets x 30 seconds each side", "cue": "Forearm plank, pull one knee towards chest isometric hold.", "img": "Workout_images/EX-15.jpg"}
              ]'>
           <span>Routine 4: HOME Dumbbell & Bodyweight</span>
           <div class="card-actions">
@@ -443,13 +443,13 @@
         <div class="workout-card-sidebar fc-event-template" style="background-color: #a855f7;" 
              data-title="Routine 9: HOME Core, Mobility & Light DB" data-color="#a855f7" 
              data-exercises='[
-               {"name": "Cat to Cow Warmup", "meta": "1 set x 30 seconds", "cue": "Spine flexion and extension gently.", "img": "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=400&q=80"},
-               {"name": "Adductor Stretch with Thoracic Twist", "meta": "1 set x 5 reps each side", "cue": "Leg out to side, rotate chest open.", "img": "https://images.unsplash.com/photo-1598268121084-c8f7126e22c9?auto=format&fit=crop&w=400&q=80"},
-               {"name": "Prone W to Y Raise", "meta": "2 sets x 10 reps", "cue": "Face down, squeeze shoulder blades from W into Y.", "img": "https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?auto=format&fit=crop&w=400&q=80"},
-               {"name": "Feet Elevated Hamstring Bridge Banded March", "meta": "3 sets x 12-15 reps", "cue": "Heels on chair, bridge up, alternate knees.", "img": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=400&q=80"},
-               {"name": "Forearm Supported Single Arm Row", "meta": "3 sets x 8-10 reps each side", "cue": "Supported single arm row with dumbbell.", "img": "https://images.unsplash.com/photo-1605296867304-46d5465a13f1?auto=format&fit=crop&w=400&q=80"},
-               {"name": "Close Grip Dumbbell Bicep Curls", "meta": "3 sets x 12 reps", "cue": "Stand tall, curl dumbbells with palms up.", "img": "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=400&q=80"},
-               {"name": "Hip Flexor Iso Plank", "meta": "3 sets x 30 seconds each side", "cue": "Plank hold with single knee tuck.", "img": "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=400&q=80"}
+               {"name": "Cat to Cow Warmup", "meta": "1 set x 30 seconds", "cue": "On hands and knees, flex and extend spine gently with breathing.", "img": "Workout_images/EX-10.jpg"},
+               {"name": "Adductor Stretch with Thoracic Twist", "meta": "1 set x 5 reps each side", "cue": "One leg straight to side, rotate top arm upward to ceiling.", "img": "Workout_images/EX-11.jpg"},
+               {"name": "Prone W to Y Raise", "meta": "2 sets x 10 reps", "cue": "Lie face down, draw elbows back into W shape, extend arms up into Y shape.", "img": "Workout_images/EX-17.jpg"},
+               {"name": "Feet Elevated Hamstring Bridge Banded March", "meta": "3 sets x 12-15 reps", "cue": "Heels on bench, lift hips into bridge, alternate lifting knees against band.", "img": "Workout_images/EX-13.jpg"},
+               {"name": "Forearm Supported Single Arm Row", "meta": "3 sets x 8-10 reps each side", "cue": "Forearm braced on incline bench, pull DB up toward hip with flat back.", "img": "Workout_images/EX-16.jpg"},
+               {"name": "Close Grip Dumbbell Bicep Curls", "meta": "3 sets x 12 reps", "cue": "Stand tall, palms facing up, keep elbows pinned close to ribs while curling.", "img": "Workout_images/EX-18.jpg"},
+               {"name": "Hip Flexor Iso Plank", "meta": "3 sets x 30 seconds each side", "cue": "Forearm plank, pull one knee towards chest isometric hold.", "img": "Workout_images/EX-15.jpg"}
              ]'>
           <span>Routine 9: HOME Core, Mobility & Light DB</span>
           <div class="card-actions">
@@ -465,12 +465,12 @@
         <div class="workout-card-sidebar fc-event-template" style="background-color: #ec4899;" 
              data-title="Routine 5: STICK Mobility & Joint Flow" data-color="#ec4899" 
              data-exercises='[
-               {"name": "Thoracic Spine Mobility using Bench/Stick", "meta": "1 set x 12 reps", "cue": "Hold stick overhead, elbows on bench, sink chest toward floor.", "img": "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=400&q=80"},
-               {"name": "Incline Bench Pigeon Stretch with Reach", "meta": "1 set x 8 reps each side", "cue": "Hinge forward over bench with stick for balance.", "img": "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=400&q=80"},
-               {"name": "Kettlebell/Stick Adductor Stretch", "meta": "1 set x 10 reps each side", "cue": "Wide stance, shift sideways using stick to maintain upright spine.", "img": "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=400&q=80"},
-               {"name": "Prone W to Y Raise", "meta": "2 sets x 10-12 reps", "cue": "Face down, lift stick from upper back into Y raise.", "img": "https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?auto=format&fit=crop&w=400&q=80"},
-               {"name": "High to Low Band / Stick Pull Apart", "meta": "2 sets x 12 reps", "cue": "Pull band diagonally across chest with arms straight.", "img": "https://images.unsplash.com/photo-1598268121084-c8f7126e22c9?auto=format&fit=crop&w=400&q=80"},
-               {"name": "Feet Elevated Hamstring Bridge Banded March", "meta": "2 sets x 12-15 reps total", "cue": "Bridge hips, alternate knee lifts.", "img": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=400&q=80"}
+               {"name": "Thoracic Spine Mobility using Bench/Stick", "meta": "1 set x 12 reps", "cue": "Elbows on bench holding stick, sink chest toward floor to extend spine.", "img": "Workout_images/EX-20.jpg"},
+               {"name": "Incline Bench Pigeon Stretch with Reach", "meta": "1 set x 8 reps each side", "cue": "Chest tall, hinge forward over inclined bench, reach arm across for glute stretch.", "img": "Workout_images/EX-01.jpg"},
+               {"name": "Kettlebell/Stick Adductor Stretch", "meta": "1 set x 10 reps each side", "cue": "Wide stance, shift hips sideways over bent knee using stick for stability.", "img": "Workout_images/EX-21.jpg"},
+               {"name": "Prone W to Y Raise", "meta": "2 sets x 10-12 reps", "cue": "Lie face down, draw elbows back into W shape, extend arms into Y shape.", "img": "Workout_images/EX-17.jpg"},
+               {"name": "High to Low Band / Stick Pull Apart", "meta": "2 sets x 12 reps", "cue": "Stand tall, pull band diagonally across chest squeezing shoulder blades.", "img": "Workout_images/EX-02.jpg"},
+               {"name": "Feet Elevated Hamstring Bridge Banded March", "meta": "2 sets x 12-15 reps total", "cue": "Heels on bench, lift hips into bridge, alternate lifting knees against band.", "img": "Workout_images/EX-13.jpg"}
              ]'>
           <span>Routine 5: STICK Mobility & Joint Flow</span>
           <div class="card-actions">
@@ -612,6 +612,14 @@
       }
     }
 
+    function handleImageError(imgEl) {
+      if (imgEl.src.endsWith('.jpg')) {
+        imgEl.src = imgEl.src.replace('.jpg', '.jpeg');
+      } else if (imgEl.src.endsWith('.jpeg')) {
+        imgEl.src = imgEl.src.replace('.jpeg', '.png');
+      }
+    }
+
     function openModal(event) {
       selectedEvent = event;
       document.getElementById('modalTitle').innerText = event.title;
@@ -630,7 +638,7 @@
         card.innerHTML = `
           <div class="exercise-title">${ex.name}</div>
           <div class="exercise-meta">${ex.meta}</div>
-          ${ex.img ? `<div class="exercise-media-box"><img src="${ex.img}" alt="${ex.name}"></div>` : ''}
+          ${ex.img ? `<div class="exercise-media-box"><img src="${ex.img}" alt="${ex.name}" onerror="handleImageError(this)"></div>` : ''}
           ${ex.cue ? `<div class="form-cue">💡 <strong>Technique Cue:</strong> ${ex.cue}</div>` : ''}
           <a href="${youtubeUrl}" target="_blank" class="btn-video">🎬 View Form Video</a>
         `;
